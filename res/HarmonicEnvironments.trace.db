@@ -1,0 +1,9 @@
+2020-11-24 16:43:37 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "STEEL_MATERIALS" not found; SQL statement:
+SELECT * FROM STEEL_MATERIALS [42102-200]
+2020-11-24 16:43:37 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "STEEL_MATERIALS" not found; SQL statement:
+SELECT * FROM STEEL_MATERIALS [42102-200]
+2020-11-24 16:43:37 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LABOR" not found; SQL statement:
+SELECT * FROM LABOR [42102-200]

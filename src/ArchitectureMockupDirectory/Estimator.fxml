@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ArchitectureMockupDirectory.Controller">
+   <children>
+      <TabPane layoutX="186.0" layoutY="100.0" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <tabs>
+          <Tab text="Estimate Profile">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextField fx:id="textfield_clientName" layoutX="226.0" layoutY="40.0" prefHeight="26.0" prefWidth="250.0" promptText="John Smith, El Electric Inc." />
+                        <TextField fx:id="textfield_clientaddress" layoutX="226.0" layoutY="97.0" prefHeight="26.0" prefWidth="250.0" promptText="555 Electric Ave., Fort Myers, FL 33901" />
+                        <TextField fx:id="textfield_product" layoutX="226.0" layoutY="149.0" prefHeight="26.0" prefWidth="250.0" promptText="Wine Room" />
+                        <TextField fx:id="textfield_estimator" layoutX="226.0" layoutY="204.0" prefHeight="26.0" prefWidth="250.0" promptText="Person Generating Estimate" />
+                        <Label layoutX="107.0" layoutY="44.0" text="Client Name:" />
+                        <Label layoutX="107.0" layoutY="101.0" text="Client Address:" />
+                        <Label layoutX="107.0" layoutY="153.0" text="Product:" />
+                        <Label layoutX="107.0" layoutY="208.0" text="Estimator:" />
+                        <Button fx:id="button_generate_profile" layoutX="249.0" layoutY="304.0" mnemonicParsing="false" onMouseClicked="#generate_profile" text="Generate Profile" />
+                        <Label layoutX="109.0" layoutY="255.0" text="Budget:" />
+                        <TextField fx:id="textfield_budget" layoutX="226.0" layoutY="251.0" prefHeight="26.0" prefWidth="250.0" promptText="100,000" />
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Materials Needed">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="tableview_materials" layoutX="26.0" layoutY="14.0" prefHeight="295.0" prefWidth="245.0">
+                          <columns>
+                            <TableColumn fx:id="col_material_name" prefWidth="150.0" text="Name" />
+                            <TableColumn fx:id="col_material_cost" prefWidth="93.59999084472656" text="Cost P/U" />
+                          </columns>
+                        </TableView>
+                        <Button fx:id="button_add_material" layoutX="210.0" layoutY="325.0" mnemonicParsing="false" onMouseClicked="#add_material" text="Add" />
+                        <TextField fx:id="textfield_material_quantity" layoutX="93.0" layoutY="325.0" prefHeight="26.0" prefWidth="91.0" promptText="5" />
+                        <Label layoutX="26.0" layoutY="329.0" text="Quantity:" />
+                        <TableView fx:id="tableview_added_materials" layoutX="321.0" layoutY="14.0" prefHeight="295.0" prefWidth="245.0">
+                          <columns>
+                            <TableColumn fx:id="col_added_material_name" prefWidth="150.0" text="Name" />
+                              <TableColumn fx:id="col_material_quantity" prefWidth="94.39998779296874" text="Quantity" />
+                          </columns>
+                        </TableView>
+                        <Button fx:id="button_remove_material" layoutX="414.0" layoutY="317.0" mnemonicParsing="false" onMouseClicked="#remove_material" text="Remove" />
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Labor Needed">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="tableview_labor" layoutX="23.0" layoutY="23.0" prefHeight="295.0" prefWidth="245.0">
+                          <columns>
+                            <TableColumn fx:id="col_labor_name" prefWidth="150.0" text="Service" />
+                            <TableColumn fx:id="col_labor_cost" prefWidth="109.60005187988281" text="Cost P/H" />
+                          </columns>
+                        </TableView>
+                        <TextField fx:id="textfield_num_of_hours" layoutX="120.0" layoutY="330.0" prefHeight="26.0" prefWidth="91.0" promptText="1.5" />
+                        <Label layoutX="23.0" layoutY="334.0" text="Num of Hours:" />
+                        <Button fx:id="button_add_labor" layoutX="221.0" layoutY="330.0" mnemonicParsing="false" onMouseClicked="#add_labor" text="Add" />
+                        <TableView fx:id="tableview_added_labor" layoutX="320.0" layoutY="23.0" prefHeight="295.0" prefWidth="245.0">
+                          <columns>
+                            <TableColumn fx:id="col_added_labor" prefWidth="150.0" text="Service" />
+                            <TableColumn fx:id="col_num_of_hours" prefWidth="94.39998779296874" text="Num of Hours" />
+                          </columns>
+                        </TableView>
+                        <Button fx:id="button_remove_labor" layoutX="417.0" layoutY="331.0" mnemonicParsing="false" onMouseClicked="#remove_labor" text="Remove" />
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Get Estimate">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextArea fx:id="textarea_estimate_report" layoutX="60.0" layoutY="48.0" prefHeight="237.0" prefWidth="459.0" promptText="Your report will be displayed here..." />
+                        <Button fx:id="button_get_estimate" layoutX="244.0" layoutY="310.0" mnemonicParsing="false" onMouseClicked="#generate_estimate" text="Generate Estimate" />
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+
+
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>
