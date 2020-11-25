@@ -1,3 +1,8 @@
+/*
+Labor object created so that it can be stored into the LABOR table.
+Labor stored into the database using method: Database_Accessor.addLabor(Labor labor)
+ */
+
 package ArchitectureMockupDirectory;
 
 public class Labor {

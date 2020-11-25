@@ -1,3 +1,11 @@
+/*
+Material object created so that it can be stored into the STEEL_MATERIALS table.
+Sub-classes may be created later on, depending on if Chris requires multiple types of
+materials (e.g. WOOD_MATERIALS)
+Material stored into the database using method: Database_Accessor.addMaterial(Material material)
+ */
+
+
 package ArchitectureMockupDirectory;
 
 public class Material {

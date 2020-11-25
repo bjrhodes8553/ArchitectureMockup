@@ -1,5 +1,12 @@
-package ArchitectureMockupDirectory;
+/*
+Estimate class to create an Estimate object containing all the information
+needed to create an estimate for the client.
+The ESTIMATE table in the database takes this object as an argument when storing
+the estimate information into the table.
+Stored into database using method: Database_Accessor.addEstimate(Estimate estimate)
+ */
 
+package ArchitectureMockupDirectory;
 import java.time.LocalDate;
 
 public class Estimate {

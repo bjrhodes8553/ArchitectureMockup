@@ -24,10 +24,10 @@ public class Main extends Application {
     Scene sceneMain = new Scene(root);
     primaryStage.setTitle("Estimator Tool");
     primaryStage.setScene(sceneMain);
-    //sceneMain.getStylesheets().add(Main.class.getResource("Style.css").toExternalForm());
     primaryStage.show();
   }
 
+  //This method is called to create a new screen from clicking a button.
   public static void createNewScene(Event event, String newFileFXML) {
     Parent newRoot = null;
     try {

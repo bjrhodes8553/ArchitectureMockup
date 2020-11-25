@@ -17,10 +17,10 @@ public class Database_Accessor {
   private static Statement stmt = null;
 
 
-
+// Gets the Estimate profile based on the clients name being passed through parameter
   public static Estimate getEstimate(String clientName) {
-    Estimate currentEstimate = new Estimate("", " ",
-        "", "",0, LocalDate.now(),
+    Estimate currentEstimate = new Estimate(0,"", " ",
+        "", "",0, LocalDate.parse("1111-11-25"),
         0, 0, 0);
     try {
       conn = DriverManager.getConnection(DB_URL, user, pass);
@@ -44,12 +44,13 @@ public class Database_Accessor {
       }
       stmt.close();
       conn.close();
-    } catch (SQLException e) {
+    }  catch (SQLException e) {
       e.printStackTrace();
     }
     return currentEstimate;
   }
 
+  //Adds a Material object to the STEEL_MATERIAL table
   public static void addMaterial(Material material) {
     try {
       conn = DriverManager.getConnection(DB_URL, user, pass);
@@ -69,7 +70,7 @@ public class Database_Accessor {
     }
   }
 
-
+//Adds Labor object to the LABOR table
   public static void addLabor(Labor labor) {
     try {
       conn = DriverManager.getConnection(DB_URL, user, pass);
@@ -89,7 +90,7 @@ public class Database_Accessor {
     }
   }
 
-
+//Adds Estimate object to the ESTIMATE table
   public static void addEstimate(Estimate estimate) {
     try {
       conn = DriverManager.getConnection(DB_URL, user, pass);
@@ -124,7 +125,7 @@ public class Database_Accessor {
     }
   }
 
-
+//Updates current Estimate object with the cost of materials
   public static void updateEstimateWithMaterials(double materialCost){
     Connection conn = null;
     Statement stmt = null;
@@ -147,6 +148,7 @@ public class Database_Accessor {
     }
   }
 
+  //Updates the current Estimate with the cost of labor
   public static void updateEstimateWithLabor(double laborCost){
     Connection conn = null;
     Statement stmt = null;
@@ -169,6 +171,7 @@ public class Database_Accessor {
     }
   }
 
+  //Updates the current Estimate with the total cost of materials and labor
   public static void updateEstimateWithTotal(double total){
     Connection conn = null;
     Statement stmt = null;
@@ -191,7 +194,7 @@ public class Database_Accessor {
     }
   }
 
-
+//Gets an array list of all the materials available in the database (used to populate TableView)
   public static ArrayList<Material> getMaterials() {
     ArrayList<Material> materials = new ArrayList<>();
     try {
@@ -213,6 +216,7 @@ public class Database_Accessor {
     return materials;
   }
 
+  //Gets an ArrayList of al the labor services in the database (used to populate TableView)
   public static ArrayList<Labor> getLabor() {
     ArrayList<Labor> laborList = new ArrayList<>();
     try {
@@ -233,15 +237,6 @@ public class Database_Accessor {
     }
     return laborList;
   }
-
-
-
-
-
-
-
-
-
 
 
 }
