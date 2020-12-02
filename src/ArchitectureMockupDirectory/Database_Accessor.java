@@ -56,7 +56,7 @@ public class Database_Accessor {
       conn = DriverManager.getConnection(DB_URL, user, pass);
       stmt = conn.createStatement();
       String sql =
-          "INSERT INTO STEEL_MATERIALS(material_name, material_cost)"
+          "INSERT INTO MATERIALS(material_name, material_cost)"
               + "VALUES('"
               + material.getMaterial_name()
               + "','"
@@ -148,6 +148,59 @@ public class Database_Accessor {
     }
   }
 
+  //Adds the actual list of materials being used for the estimate to the database
+  public static void updateEstimateWithListOfMaterials(String materialsNeeded){
+    String[] materialArray = {" "};
+    for(int i=0; i<materialArray.length; i++){
+      materialArray[i] = materialsNeeded;
+    }
+    Connection conn = null;Statement stmt = null;
+    try {
+      Class.forName(JDBC_DRIVER);
+      conn = DriverManager.getConnection(DB_URL, user, pass);
+
+      stmt = conn.createStatement();
+      for(String x :materialArray) {
+        String sql =
+            "UPDATE ESTIMATE "
+                + " SET MATERIALS_NEEDED = '" + x + "'"
+                + " WHERE ESTIMATE_ID='" + Main.currentEstimate.getEstimate_id() + "'";
+
+        stmt.executeUpdate(sql);
+      }
+      stmt.close();
+      conn.close();
+    } catch (ClassNotFoundException e) {
+      e.printStackTrace();
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+  }
+
+  //Adds the actual list of materials being used for the estimate to the database
+  public static void updateEstimateWithListOfLabor(String laborNeeded){
+    Connection conn = null;
+    Statement stmt = null;
+    try {
+      Class.forName(JDBC_DRIVER);
+      conn = DriverManager.getConnection(DB_URL, user, pass);
+
+      stmt = conn.createStatement();
+        String sql =
+            "UPDATE ESTIMATE "
+                + " SET ESTIMATE.LABOR_NEEDED = '" + laborNeeded + "'"
+                + " WHERE ESTIMATE_ID='" + Main.currentEstimate.getEstimate_id() + "'";
+
+        stmt.executeUpdate(sql);
+      stmt.close();
+      conn.close();
+    } catch (ClassNotFoundException e) {
+      e.printStackTrace();
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+  }
+
   //Updates the current Estimate with the cost of labor
   public static void updateEstimateWithLabor(double laborCost){
     Connection conn = null;
@@ -200,7 +253,7 @@ public class Database_Accessor {
     try {
       conn = DriverManager.getConnection(DB_URL, user, pass);
       stmt = conn.createStatement();
-      String sql = "SELECT * FROM STEEL_MATERIALS";
+      String sql = "SELECT * FROM MATERIALS";
       ResultSet rs = stmt.executeQuery(sql);
       while(rs.next()) {
         materials.add(

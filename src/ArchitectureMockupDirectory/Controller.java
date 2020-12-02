@@ -124,6 +124,17 @@ public class Controller {
   @FXML
   private Label label_warning;
 
+  @FXML
+  private Label label_profile_created;
+
+  @FXML
+  private Label label_client_name;
+
+  @FXML
+  private Label label_next;
+
+
+
 
   public void initialize(){
     //Populates the tableview containing all the materials in the database
@@ -191,8 +202,12 @@ public class Controller {
     Labor addLabor = tableview_labor.getSelectionModel().getSelectedItem();
     addLaborList.add(addLabor);
     textfield_num_of_hours.clear();
-    tableview_added_labor.getItems().clear();
     tableview_added_labor.getItems().addAll(addLaborList);
+    for(Labor x: addLaborList){
+      Database_Accessor.updateEstimateWithListOfLabor(x.getLabor_service());
+    }
+
+
     for(Labor x: addLaborList){
       hours_times_cost = x.getLabor_cost_per_hour()*hours;
       sum_of_labor= sum_of_labor+hours_times_cost;
@@ -213,10 +228,14 @@ public class Controller {
     double updatedMaterial = 0.0;
     int quantity = Integer.parseInt(textfield_material_quantity.getText());
 
+
     Material addMaterial = tableview_materials.getSelectionModel().getSelectedItem();
     addMaterialsList.add(addMaterial);
+    for(Material x : addMaterialsList){
+      Database_Accessor.updateEstimateWithListOfMaterials(x.getMaterial_name());
+    }
+    Database_Accessor.updateEstimateWithListOfMaterials(addMaterial.getMaterial_name());
 
-    tableview_added_materials.getItems().clear();
     tableview_added_materials.getItems().addAll(addMaterialsList);
     textfield_material_quantity.clear();
     for(Material x: addMaterialsList){
@@ -247,6 +266,9 @@ public class Controller {
     Estimate newEstimate = new Estimate(client, address, product, estimator, budget, date, material_cost, labor_cost, total_cost);
     Database_Accessor.addEstimate(newEstimate);
     Main.currentEstimate = newEstimate;
+    label_profile_created.setText("Profile Created for: ");
+    label_client_name.setText(newEstimate.getClient());
+    label_next.setText("Select the 'Materials Needed' tab to continue");
     if(newEstimate != null){
       label_warning.setTextFill(Color.web("#0076a3"));
       label_warning.setText("Profile Located");

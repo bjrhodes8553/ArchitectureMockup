@@ -43,6 +43,21 @@
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Label>
+                        <Label fx:id="label_profile_created" layoutX="603.0" layoutY="266.0" textFill="#9900ff">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="label_client_name" layoutX="583.0" layoutY="285.0" textFill="#9900ff">
+                           <font>
+                              <Font name="System Bold Italic" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="label_next" layoutX="529.0" layoutY="320.0" textFill="RED">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
                      </children></AnchorPane>
             </content>
           </Tab>
